@@ -1,0 +1,52 @@
+@use '../../../00-base/breakpoints/breakpoints' as *;
+@use '../../../00-base/typography/typography';
+@use '../../../00-base/spacing/spacing' as *;
+
+.heading {
+  font-family: typography.$font-family-serif;
+  margin: 0 0 space(1);
+}
+
+h1 {
+  @include typography.h1;
+
+  &.heading {
+    margin: 0;
+  }
+}
+
+h2 {
+  @include typography.h2;
+}
+
+h3,
+.h3 {
+  @include typography.h3;
+}
+
+h4 {
+  @include typography.h4;
+}
+
+h5 {
+  @include typography.h5;
+}
+
+// add top margin to headings when used after p
+p {
+  + h2,
+  + h3,
+  + h4 {
+    margin-top: space(2);
+  }
+}
+
+.heading:not(:first-child) {
+  margin-top: space(2);
+}
+
+.subheading {
+  @include typography.body-xl;
+
+  color: clr(neutral, n500);
+}

@@ -1,0 +1,10 @@
+.cl-image-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(1.5);
+  max-width: 1200px;
+}
+
+.cl-image-example {
+  flex: 1 0 clamp(10rem, 40%, 20rem);
+}

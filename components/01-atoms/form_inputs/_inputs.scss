@@ -1,0 +1,47 @@
+@forward './checkbox/checkbox';
+@forward './radio/radio';
+@forward './select/select';
+@forward './textfields/textfields';
+
+@use '../../00-base/functions/color' as *;
+@use '../../00-base/spacing/spacing' as *;
+@use '../../00-base/typography/typography';
+@use '../buttons/buttons' as *;
+
+.form_item,
+.form-actions {
+  margin-bottom: space(1);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  label {
+    display: block;
+    margin-bottom: space(0.25);
+  }
+
+  &--error-message {
+    background-color: clr(error);
+    color: clr(full-white);
+    padding: space(0.5) space(0.75);
+    margin: 0 space(1.5);
+    border-radius: 0 0 space(1) space(1);
+
+    > a {
+      color: clr(full-white);
+    }
+
+    + .description {
+      display: none;
+    }
+  }
+
+  &__description,
+  .description {
+    @include typography.body-s;
+
+    color: clr(text);
+    opacity: 0.75;
+  }
+}

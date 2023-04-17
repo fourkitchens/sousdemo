@@ -1,0 +1,67 @@
+{#
+ # Available Props:
+ # - text_with_image__width: feature (default) or highlight
+ # - text_with_image__position: image-left (default) or image-right
+ # - text_with_image__focus: equal (default), image, or text
+ #
+ # Available variables:
+ # - text_with_image__heading
+ # - text_with_image__subheading (optional)
+ # - text_with_image__text
+ #
+ # Available blocks:
+ # - text_with_image__image
+ #}
+
+{% set text_with_image__base_class = 'text-with-image' %}
+
+{% set text_with_image__attributes = {
+  'data-image-position': text_with_image__position|default('left'),
+  'data-component-focus': text_with_image__focus|default('equal'),
+  'class': bem(text_with_image__base_class, text_with_image__modifiers, text_with_image__blockname)
+} %}
+
+{% set text_with_image %}
+  <div {{ add_attributes(text_with_image__attributes) }}>
+    {# Content #}
+    <div {{ bem('content', [], text_with_image__base_class) }}>
+      {# Heading #}
+      {% if text_with_image__heading %}
+        {% include "@atoms/text/headings/heading.twig" with {
+          heading: text_with_image__heading,
+          heading__level: '2',
+          heading__blockname: text_with_image__base_class,
+        } %}
+      {% endif %}
+      {# Text #}
+      {% include "@atoms/text/text/text.twig" with {
+        text__content: text_with_image__text,
+        text__blockname: text_with_image__base_class,
+      } %}
+      {# optional link #}
+      {% if text_with_image__link__url %}
+        {% include "@atoms/link/link.twig" with {
+          link__content: text_with_image__link__content,
+          link__url: text_with_image__link__url,
+          link__style: 'arrow-right',
+        } %}
+      {% endif %}
+    </div>
+    {# Image #}
+    <div {{ bem('image', text_with_image__modifiers, text_with_image__base_class) }}>
+      {% block text_with_image__image %}
+        {% include "@atoms/images/image/image.twig" %}
+      {% endblock %}
+    </div>
+  </div>
+{% endset %}
+
+{# Render the accordion within a generic container #}
+{% embed "@templates/container/container.twig" with {
+  container__component_width: 'standard',
+  container__component_alignment: 'center',
+}%}
+	{% block container__content %}
+		{{ text_with_image }}
+	{% endblock %}
+{% endembed %}

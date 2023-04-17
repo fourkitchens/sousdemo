@@ -1,0 +1,15 @@
+items:
+  - title: 'Prev'
+    url: '#'
+    aria_label: 'Previous Pages'
+  - title: '...'
+    supplemental: true
+  - title: '5'
+    url: '#'
+    is_active: true
+  - title: '6'
+    url: '#'
+  - title: '7'
+    url: '#'
+  - title: '8'
+    url: '#'

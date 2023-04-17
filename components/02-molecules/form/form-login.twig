@@ -1,0 +1,15 @@
+{% set form__base_class = form__base_class|default('form') %}
+
+<form {{ bem(form__base_class, form__modifiers, form__blockname, [form_id]) }}>
+  {% include "@molecules/logo/logo.twig" with {
+    logo__type: 'informal',
+    logo__modifiers: ['intro'],
+  } %}
+
+  {% include "@molecules/logo/logo.twig" with {
+    logo__type: 'text',
+    logo__modifiers: ['intro'],
+  } %}
+  <a href="#" class="login-form-toggle">Drupal Login</a>
+	{{ children }}
+</form>

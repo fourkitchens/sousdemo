@@ -1,0 +1,86 @@
+@use '../../../00-base/breakpoints/breakpoints' as *;
+@use '../../../00-base/functions/color' as *;
+@use '../../../00-base/spacing/spacing' as *;
+@use '../../../00-base/typography/typography' as *;
+
+.text {
+  @include body-default;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: $font-family-serif;
+  }
+
+  h1 {
+    @include h1;
+  }
+
+  h2 {
+    @include h2;
+  }
+
+  h3 {
+    @include h3;
+  }
+
+  h4 {
+    @include h4;
+  }
+
+  h5 {
+    @include h5;
+  }
+
+  .body-xl {
+    @include body-xl;
+  }
+
+  .body-xl-condensed {
+    @include body-xl-condensed;
+  }
+
+  .body-l {
+    @include body-l;
+  }
+
+  .body-l-condensed {
+    @include body-l-condensed;
+  }
+
+  .body-default {
+    @include body-default;
+  }
+
+  .body-default-condensed {
+    @include body-default-condensed;
+  }
+
+  .body-s {
+    @include body-s;
+  }
+
+  .body-s-condensed {
+    @include body-s-condensed;
+  }
+
+  p:not(:last-child) {
+    margin-bottom: space(1);
+  }
+}
+
+.glossary-heading {
+  color: clr(accent, dark, blue);
+  font-family: $font-family-serif;
+  font-size: $font-size-100;
+
+  @include breakpoint('medium') {
+    font-size: $font-size-160;
+  }
+}
+
+.grid .grid__inner:has(.glossary-heading) > :first-child {
+  margin: 0;
+}

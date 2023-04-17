@@ -1,0 +1,10 @@
+{#
+ # Available Variables:
+ # - preformatted__content: We're using raw here to support Drupal's wysiwyg editor.
+ #}
+
+{% set preformatted__base_class = preformatted__base_class|default('preformatted') %}
+
+<pre {{ bem(preformatted__base_class, preformatted__modifiers) }}>
+    {{- preformatted__content -}}
+</pre>

@@ -1,0 +1,7 @@
+{% set footer_items = footer_items|default(items) %}
+
+{% include "@molecules/navigation/menu.twig" with {
+  menu__base_class: 'footer_nav',
+  menu__name: 'Footer',
+  menu__attributes: {'aria-expanded': 'true'},
+} %}

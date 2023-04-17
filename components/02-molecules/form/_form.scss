@@ -1,0 +1,125 @@
+@use '../../00-base/functions/color' as *;
+@use '../../00-base/functions/rem-calc' as *;
+@use '../../00-base/breakpoints/breakpoints' as *;
+@use '../../00-base/spacing/spacing' as *;
+
+/* stylelint-disable no-descending-specificity */
+.form {
+  width: 100%;
+  max-width: 75%;
+
+  @include breakpoint('medium') {
+    max-width: 50%;
+  }
+
+  .form-actions {
+    padding: space(2) 0 0;
+    border-top: 2px solid clr(background);
+
+    *:not(:first-child) {
+      margin-left: space(1);
+    }
+  }
+
+  // Exposed filters.
+  &--inline-inputs {
+    display: grid;
+    gap: 0 0;
+    grid-template:
+      'form-items form-items form-items form-items'
+      'form-actions form-actions form-actions form-actions';
+    grid-template-columns: 1fr 1fr 1fr rem-calc(350);
+    grid-template-rows: 1fr;
+    align-content: center;
+    padding: space(2) space(1);
+
+    @include breakpoint('xlarge') {
+      grid-template:
+        'form-items form-items form-items form-actions'
+        'form-items form-items form-items form-actions';
+    }
+
+    > * {
+      padding: 0 space(1);
+      display: block;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+
+    &.form__views-exposed {
+      > * {
+        margin: 0;
+      }
+
+      > .form-item {
+        &:nth-child(n + 4) {
+          padding-top: space(2);
+        }
+      }
+
+      > .form-actions {
+        grid-area: form-actions;
+        display: flex;
+        flex-wrap: nowrap;
+        flex: 1 1 auto;
+        align-items: center;
+        align-self: stretch;
+        padding: space(2) 0 0 0;
+        margin: space(2) 0 0 0;
+        border-top: 2px solid clr(background);
+        max-width: 100%;
+
+        @include breakpoint('xlarge') {
+          padding: 0 0 0 space(2);
+          margin: 0 0 0 space(2);
+          border-top: 0;
+          border-left: 2px solid clr(background);
+        }
+      }
+    }
+  }
+
+  &.form__views-exposed {
+    background-color: clr(background);
+    margin-bottom: space(2);
+
+    [data-component-theme='inverse'] & {
+      background-color: clr(full-black, 0.1);
+    }
+  }
+
+  .filter-type--stacked & {
+    display: flex;
+    flex-flow: row wrap;
+
+    @include breakpoint('medium') {
+      flex-flow: row nowrap;
+    }
+
+    .form-item {
+      flex: 1 100%;
+
+      + .form-item {
+        margin-top: space(1);
+      }
+
+      @include breakpoint('medium') {
+        flex: 1 25%;
+
+        + .form-item {
+          margin-left: space(1);
+          margin-top: 0;
+        }
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      margin-left: space(1);
+    }
+
+    .form_item__select {
+      min-height: rem-calc(46.8);
+    }
+  }
+}

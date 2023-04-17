@@ -1,0 +1,93 @@
+@use 'sass:math';
+@use '../../00-base/breakpoints/breakpoints' as *;
+@use '../../00-base/functions/color' as *;
+@use '../../00-base/functions/rem-calc' as *;
+@use '../../00-base/motion/motion' as *;
+@use '../../00-base/spacing/spacing' as *;
+@use '../../01-atoms/buttons/buttons' as *;
+
+.user-login-form,
+.user-pass {
+  display: flex;
+  flex-flow: row wrap;
+  width: math.div($medium, 2);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: space(2) 0;
+
+  .logo {
+    position: relative;
+    flex: 1 1 100%;
+    width: 100%;
+    margin: 0 auto space(2);
+    max-width: 100%;
+  }
+
+  .logo__link {
+    max-width: rem-calc(360);
+    margin: 0 auto;
+    display: block;
+  }
+
+  .forgot-password {
+    display: none;
+  }
+
+  .back-to-login {
+    text-align: right;
+  }
+
+  .form-item {
+    margin-block: space(1);
+  }
+
+  .form-item,
+  .form-actions {
+    @include transition;
+
+    order: 2;
+    opacity: 0;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .form-item:first-of-type {
+    margin-top: space(4);
+    padding-top: space(2);
+    border-top: 1px solid clr(primary, light);
+  }
+
+  &.show {
+    .form-item,
+    .form-actions {
+      opacity: 1;
+    }
+  }
+
+  // Yale CAS login modifications
+  .simplesamlphp-auth-login-link {
+    @include button(filled);
+
+    margin: 0 auto space(1);
+    order: 0;
+  }
+
+  .login-form-toggle {
+    @include button(outline);
+
+    margin: 0 auto space(1);
+    order: 1;
+  }
+
+  .description {
+    display: none;
+  }
+}
+
+[aria-label='error'] + .user-login-form > * {
+  opacity: 1;
+}

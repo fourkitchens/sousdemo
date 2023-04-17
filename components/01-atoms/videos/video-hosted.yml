@@ -1,0 +1,4 @@
+video__type: 'hosted'
+video__urls:
+  - 'test-video.mp4'
+  - 'test-video.webm'

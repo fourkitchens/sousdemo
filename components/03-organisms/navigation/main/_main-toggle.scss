@@ -1,0 +1,79 @@
+@use './main' as *;
+@use '../../../00-base/breakpoints/breakpoints' as *;
+@use '../../../00-base/functions/color' as *;
+@use '../../../00-base/motion/motion' as *;
+@use '../../../00-base/typography/typography' as *;
+@use '../../../00-base/spacing/spacing' as *;
+
+.main-nav__toggle {
+  padding: space(1) 0 space(1) space(1);
+  font-size: 0;
+  z-index: 2;
+
+  &[data-menu-level] {
+    @include breakpoint('medium') {
+      @include animate-hidden;
+
+      opacity: 0;
+    }
+  }
+
+  &[data-menu-level='level-0'] {
+    @include breakpoint('medium') {
+      display: none;
+    }
+  }
+
+  &:focus,
+  &:focus-visible {
+    fill: clr(primary);
+    outline-offset: 0;
+    border-radius: 0;
+  }
+
+  .main-nav__item & {
+    display: inline-flex;
+    padding: space(1) space(3) space(1) space(0.5);
+    z-index: 1;
+
+    @include breakpoint('medium') {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: space(1) 0 space(1) space(0.25);
+    }
+
+    @include breakpoint('large') {
+      padding: space(1) space(0.25) space(1) space(0.25);
+    }
+
+    .icon {
+      width: space(2);
+      max-height: space(2);
+      fill: clr(primary, dark);
+
+      @include breakpoint('medium') {
+        width: space(1.5);
+        max-height: space(1.5);
+        fill: clr(primary);
+      }
+    }
+  }
+
+  .sub--open & {
+    .icon {
+      fill: clr(neutral, n400);
+      transform: rotate(180deg);
+    }
+  }
+
+  .main-nav__item:last-child & {
+    @include breakpoint('medium') {
+      right: space(1) * -1;
+    }
+  }
+
+  .icon {
+    fill: clr(text);
+  }
+}

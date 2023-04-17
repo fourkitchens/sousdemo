@@ -1,0 +1,5 @@
+link__url: 'https://github.com/emulsify-ds/emulsify-design-system'
+link__content: 'This is my link text'
+link__attributes:
+  'target': '_blank'
+  

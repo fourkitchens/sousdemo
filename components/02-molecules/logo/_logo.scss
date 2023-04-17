@@ -1,0 +1,67 @@
+@use '../../00-base/breakpoints/breakpoints' as *;
+@use '../../00-base/functions/rem-calc' as *;
+@use '../../00-base/functions/color' as *;
+@use '../../00-base/motion/motion' as *;
+@use '../../00-base/spacing/spacing' as *;
+
+.logo {
+  position: relative;
+
+  &[data-logo-type='informal'] {
+    circle {
+      fill: clr(accent, light);
+    }
+
+    path {
+      fill: clr(accent, dark);
+    }
+  }
+
+  &[data-logo-type='text'] {
+    @include transition;
+
+    max-width: rem-calc(230);
+    width: 100%;
+
+    @include breakpoint('medium') {
+      max-width: rem-calc(370);
+    }
+
+    .logo__link {
+      display: block;
+      padding: space(0.5) space(0.5) space(0.5) 0;
+
+      @include breakpoint('medium') {
+        padding: space(0.5) space(0.5) (space(1) + space(0.25)) 0;
+      }
+    }
+
+    .stuck & {
+      max-width: rem-calc(300);
+
+      .logo__link {
+        display: block;
+        padding: space(0.5) space(0.5) space(0.5) 0;
+      }
+    }
+  }
+
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.logo--intro {
+  max-width: rem-calc(360);
+}
+
+.logo--login {
+  max-width: rem-calc(230);
+  margin: space(4) auto space(2);
+
+  .logo__link {
+    display: block;
+  }
+}

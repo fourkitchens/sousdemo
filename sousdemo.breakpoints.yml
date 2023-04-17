@@ -1,0 +1,15 @@
+sousdemo.small:
+  label: small
+  mediaQuery: 'all and (min-width: 25em)'
+sousdemo.small-med:
+  label: small-med
+  mediaQuery: 'all and (min-width: 26em)'
+sousdemo.small-large:
+  label: small-large
+  mediaQuery: 'all and (min-width: 41em)'
+sousdemo.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 48em)'
+sousdemo.large:
+  label: large
+  mediaQuery: 'all and (min-width: 61.25em)'

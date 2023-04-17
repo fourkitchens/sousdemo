@@ -1,0 +1,174 @@
+@use 'spacing/spacing' as *;
+@use 'breakpoints/breakpoints' as *;
+@use 'functions/color' as *;
+@use '../01-atoms/lists/list' as list;
+
+// This file is only compiled for storybook previews.
+.cl-table {
+  border-collapse: collapse;
+
+  th,
+  td {
+    border-bottom: 1px solid;
+    padding: space(1) space(0.5);
+    text-align: left;
+  }
+}
+
+.cl-table__header {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.cl-table__bp-xsmall {
+  @include breakpoint('xsmall') {
+    background: clr(accent, dark);
+    color: clr(text, inverse);
+  }
+
+  @include breakpoint('small') {
+    background: none;
+    color: clr(text);
+  }
+}
+
+.cl-table__bp-small {
+  @include breakpoint('small') {
+    background: clr(accent, dark);
+    color: clr(text, inverse);
+  }
+
+  @include breakpoint('medium') {
+    background: none;
+    color: clr(text);
+  }
+}
+
+.cl-table__bp-medium {
+  @include breakpoint('medium') {
+    background: clr(accent, dark);
+    color: clr(text, inverse);
+  }
+
+  @include breakpoint('large') {
+    background: none;
+    color: clr(text);
+  }
+}
+
+.cl-table__bp-large {
+  @include breakpoint('large') {
+    background: clr(accent, dark);
+    color: clr(text, inverse);
+  }
+
+  @include breakpoint('xlarge') {
+    background: none;
+    color: clr(text);
+  }
+}
+
+.cl-table__bp-xlarge {
+  @include breakpoint('xlarge') {
+    background: clr(accent, dark);
+    color: clr(text, inverse);
+  }
+}
+
+.cl-spacing-xsmall {
+  margin: 0 0.5rem;
+  position: relative;
+  min-height: 1rem;
+}
+
+.cl-spacing-small {
+  margin: 1rem;
+  position: relative;
+  min-height: 1rem;
+}
+
+.cl-spacing-medium {
+  margin: 5rem;
+  position: relative;
+  min-height: 1rem;
+}
+
+.cl-spacing-large {
+  margin: 10rem;
+  position: relative;
+  min-height: 1rem;
+}
+
+.cl-spacing-visualization__wrapper {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  background-color: clr(accent, light);
+}
+
+.cl-spacing-visualization {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: clr(full-white);
+}
+
+.cl-grouping-example {
+  padding: space(0.5) 0 space(2);
+}
+
+.cl-grouping-example-large {
+  padding: space(2) 0;
+}
+
+.cl-grouping-example-xlarge {
+  padding: space(4) 0;
+}
+
+.cl-container {
+  padding: space(2);
+
+  &[data-component-theme='inverse'] {
+    .sb-show-main & {
+      padding: space(1);
+      background-color: clr(full-white);
+      color: clr(text, inverse);
+    }
+  }
+
+  &[data-component-theme] {
+    background-color: clr(accent);
+  }
+
+  &[data-component-theme*='dark'] {
+    background-color: clr(accent, dark);
+  }
+
+  &[data-component-theme*='light'] {
+    background-color: clr(accent, light);
+  }
+
+  &[data-component-theme*='bright'] {
+    background-color: clr(accent, bright);
+  }
+
+  .swatch {
+    display: block;
+    width: 100%;
+    padding: space(3);
+    margin: 0 0 space(0.5);
+    background-color: clr(accent);
+  }
+}
+
+.cl-spaced-row {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}
+
+.cl-intro {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 3rem;
+}

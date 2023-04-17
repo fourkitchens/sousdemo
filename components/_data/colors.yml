@@ -1,0 +1,13 @@
+accent:
+  - 'inherit'
+  - 'red'
+  - 'yellow'
+  - 'green'
+  - 'blue'
+  - 'purple'
+  - 'neutral'
+variant:
+  - 'base'
+  - 'dark'
+  - 'light'
+  - 'bright'

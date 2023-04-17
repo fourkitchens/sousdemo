@@ -1,0 +1,4 @@
+**/*.min.js
+**/cl-intro/config.js
+**/sd.config.js
+**/node_modules/**/*

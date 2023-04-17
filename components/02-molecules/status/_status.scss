@@ -1,0 +1,40 @@
+@use '../../00-base/spacing/spacing' as *;
+@use '../../00-base/functions/color' as *;
+@use '../../00-base/typography/typography' as *;
+@use '../../01-atoms/lists/list' as list;
+
+.status__list {
+  @include list.reset;
+}
+
+.status {
+  @include body-l-condensed;
+
+  display: block;
+  padding: space(0.5);
+  text-align: center;
+  border-top: 4px solid;
+  border-bottom: 4px solid;
+
+  &:not(:last-child) {
+    margin-block: 0 space(1);
+  }
+
+  &--warning {
+    color: clr(full-black);
+    background-color: clr(warning);
+    border-color: clr(warning, 0.25);
+  }
+
+  &--error {
+    color: clr(full-white);
+    background-color: clr(error);
+    border-color: clr(error, 0.25);
+  }
+
+  &--status {
+    color: clr(full-white);
+    background-color: clr(message);
+    border-color: clr(message, 0.25);
+  }
+}

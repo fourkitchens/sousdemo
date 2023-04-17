@@ -1,0 +1,40 @@
+@use '../../00-base/spacing/spacing' as *;
+
+@mixin reset {
+  list-style: none;
+  margin: 0;
+  padding-inline: 0;
+}
+
+ul {
+  @include reset;
+
+  margin-left: space(0.25);
+  list-style-type: none;
+}
+
+ol {
+  @include reset;
+
+  margin-left: space(0.33);
+  list-style-type: decimal;
+}
+
+.text {
+  ul,
+  ol {
+    margin-left: space(1.5);
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li {
+    margin-bottom: space(0.33) * 2;
+  }
+}

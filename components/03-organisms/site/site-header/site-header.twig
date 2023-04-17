@@ -1,0 +1,54 @@
+{#
+ # Available Props:
+ # - site_header__theme
+ # - site_header__border_thickness
+ # - site_header__nav_position
+ #
+ # Available Variables
+ # - site_name
+ #
+ # Available Blocks
+ # - site_header__utility_nav
+ # - site_header__primary_nav
+ #}
+
+{% set site_header__base_class = 'site-header' %}
+
+{% set site_header__attributes = {
+  'class': bem(site_header__base_class),
+} %}
+
+{# Site Alerts #}
+<header {{ add_attributes(site_header__attributes) }}>
+	<div
+		{{ bem('inner', [], site_header__base_class) }}>
+			<div {{ bem('main', [], site_header__base_class) }}>
+				{# Site Branding #}
+				<div {{ bem('branding', [], site_header__base_class) }}>
+					{% block site__branding %}
+						{% include "@molecules/logo/logo.twig" with {
+							logo__modifiers: ['header'],
+						}%}
+					{% endblock %}
+				</div>
+
+				{# Primary Nav #}
+				<div {{ bem('primary-nav', [], site_header__base_class) }}>
+					{% block site_header__primary_nav %}
+						{% include "@organisms/navigation/main/main.twig" %}
+					{% endblock %}
+				</div>
+		</div>
+
+		{# Utility Nav #}
+		<div {{ bem('utility-nav', [], site_header__base_class) }}>
+			{% block site_header__search %}
+				{% include "@atoms/images/icons/_icon.twig" with {
+					icon__base_class: 'search',
+					icon__blockname: site_header__base_class,
+					icon__name: 'search',
+				} %}
+			{% endblock %}
+		</div>
+	</div>
+</header>

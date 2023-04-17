@@ -1,0 +1,13 @@
+pager__modifiers: ['mini']
+items:
+  - title: 'Prev'
+    url: '#'
+    aria_label: 'Previous Page'
+  - title: '5'
+    url: '#'
+    is_active: true
+  - title: '18'
+    url: '#'
+  - title: 'Next'
+    url: '#'
+    aria_label: 'Next Page'

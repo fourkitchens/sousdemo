@@ -1,0 +1,73 @@
+@use '../../../00-base/functions/color' as *;
+@use '../../../00-base/spacing/spacing' as *;
+
+$icon-size: space(1.5);
+
+.form_item__textfield,
+.form-item__textfield,
+.form-text,
+.form_item__textarea,
+.form-item__textarea {
+  border: 2px solid clr(neutral, 0);
+  border-radius: space(0.25);
+  box-shadow: 0 0 0 1px clr(neutral, n600);
+  padding: space(0.5) space(1);
+  margin: 0;
+  width: 100%;
+  color: clr(text);
+  background-color: transparent;
+
+  &:focus {
+    border: 2px solid clr(full-black);
+    outline: none;
+    background-color: clr(background);
+    box-shadow: 0 2px 5px clr(full-black, 0.25);
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 1px clr(full-black);
+    background-color: clr(neutral, n50);
+  }
+
+  &.error {
+    border: 1px solid clr(error);
+  }
+}
+
+.form_item__textfield {
+  margin-bottom: 1rem;
+}
+
+.form_item__description,
+.form-item__description {
+  margin-top: space(1) * -1;
+}
+
+.form_item__inner {
+  // style for the error form
+  .form_item--error & {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+
+    .form_item__textfield {
+      padding-right: space(3);
+      border: 1px solid clr(error);
+    }
+
+    .infoAlert__icon {
+      position: relative;
+      top: space(1) * -0.5;
+      right: space(2.5);
+      width: $icon-size;
+      height: $icon-size;
+      color: clr(error);
+    }
+  }
+}
+
+.form_error__description {
+  color: clr(error);
+  margin-top: space(1) * -1;
+}

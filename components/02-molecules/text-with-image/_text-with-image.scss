@@ -1,0 +1,165 @@
+@use '../../00-base/breakpoints/breakpoints' as *;
+@use '../../00-base/spacing/spacing' as *;
+@use '../../00-base/typography/typography' as *;
+
+.text-with-image {
+  display: flex;
+
+  @include breakpoint('large') {
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &[data-image-position='left'] {
+    &[data-component-focus='image'] {
+      flex-direction: column-reverse;
+
+      @include breakpoint('large') {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &[data-component-focus='equal'] {
+      flex-direction: column-reverse;
+
+      @include breakpoint('small') {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &[data-component-focus='text'] {
+      flex-direction: column-reverse;
+
+      @include breakpoint('small') {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+
+  &[data-image-position='right'] {
+    &[data-component-focus='image'] {
+      flex-direction: column-reverse;
+
+      @include breakpoint('large') {
+        flex-flow: row nowrap;
+      }
+    }
+
+    &[data-component-focus='equal'] {
+      flex-direction: column-reverse;
+
+      @include breakpoint('small') {
+        flex-flow: row nowrap;
+      }
+    }
+
+    &[data-component-focus='text'] {
+      flex-direction: column-reverse;
+
+      @include breakpoint('small') {
+        flex-flow: row nowrap;
+      }
+    }
+  }
+}
+
+.text-with-image__content {
+  flex: 1 auto;
+  word-break: break-word;
+  align-self: flex-start;
+  margin-left: auto;
+
+  @include breakpoint('large') {
+    flex: 1 50%;
+    margin: 0;
+  }
+
+  [data-image-position='left'] & {
+    @include breakpoint('small') {
+      padding-left: space(2);
+    }
+  }
+
+  [data-image-position='right'] & {
+    @include breakpoint('small') {
+      padding-right: space(2);
+    }
+  }
+
+  [data-component-focus='equal'] & {
+    flex: 1 1 50%;
+    width: 90%;
+
+    @include breakpoint('medium') {
+      width: 100%;
+    }
+  }
+
+  [data-component-focus='image'] & {
+    flex: 1 1 40%;
+    width: 90%;
+
+    @include breakpoint('large') {
+      width: 100%;
+    }
+  }
+
+  [data-component-focus='text'] & {
+    flex: 1 1 60%;
+    width: 90%;
+
+    @include breakpoint('large') {
+      width: 100%;
+    }
+  }
+}
+
+.text-with-image__image {
+  flex: 1 auto;
+  margin-bottom: space(2);
+  position: relative;
+  margin-right: auto;
+
+  @include breakpoint('large') {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
+  [data-component-focus='equal'] & {
+    flex: 1 1 50%;
+    width: 80%;
+
+    @include breakpoint('medium') {
+      width: 50%;
+    }
+  }
+
+  [data-component-focus='image'] & {
+    flex: 1 1 60%;
+    width: 80%;
+
+    @include breakpoint('large') {
+      width: 100%;
+    }
+  }
+
+  [data-component-focus='text'] & {
+    flex: 1 1 40%;
+    width: 80%;
+
+    @include breakpoint('xsmall') {
+      width: 50%;
+    }
+  }
+}
+
+.text-with-image__heading {
+  @include h3;
+
+  margin-bottom: space(1);
+}
+
+.text-with-image__text {
+  margin-bottom: space(1);
+}

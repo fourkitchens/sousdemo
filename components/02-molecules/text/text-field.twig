@@ -1,0 +1,29 @@
+{#
+ # Available Variables:
+ # - text_field__content
+ # - text_field__heading
+ #}
+
+{% set text_field__base_class = 'text' %}
+
+{% set text_field__attributes = {
+  'class': bem(text_field__base_class, text_field__modifiers, text_field__blockname),
+} %}
+
+{% set text_field %}
+  {% include "@atoms/text/text/text.twig" with {
+    text__content: text_field__content,
+  } %}
+{% endset %}
+
+{# Render the accordion within a generic container #}
+{% embed "@templates/container/container.twig" with {
+  container__component_width: accordion__width|default('compressed'),
+  container__component_alignment: accordion__alignment|default('center'),
+  container__heading: text_field__heading,
+  container__text: accordion__text,
+}%}
+	{% block container__content %}
+		{{ text_field }}
+	{% endblock %}
+{% endembed %}

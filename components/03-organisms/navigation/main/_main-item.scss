@@ -1,0 +1,34 @@
+@use '../../../00-base/breakpoints/breakpoints' as *;
+@use '../../../00-base/motion/motion' as *;
+@use '../../../00-base/spacing/spacing' as *;
+@use '../../../00-base/functions/color' as *;
+
+.main-nav__item {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    > * {
+      color: clr(primary);
+    }
+
+    .main-nav__toggle {
+      @include animate-show;
+
+      color: clr(primary);
+    }
+
+    .icon {
+      fill: clr(primary);
+    }
+  }
+
+  &--level-1:not(:last-child) {
+    @include breakpoint('medium') {
+      border-bottom: 1px solid clr(neutral, n200);
+    }
+  }
+}

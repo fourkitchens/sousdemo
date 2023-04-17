@@ -1,0 +1,30 @@
+// Storybook styling
+@use '../../../00-base/spacing/spacing' as *;
+@use '../../../00-base/functions/color' as *;
+
+.cl-icons-example {
+  display: flex;
+  flex-wrap: wrap;
+
+  .icon {
+    padding: space(0.5);
+    height: 6.25rem;
+    width: 6.25rem;
+  }
+
+  pre {
+    margin: 0;
+    padding: space(0.5);
+    color: clr(full-black);
+    text-align: center;
+  }
+}
+
+.cl-icons-example__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: space(0.5);
+  padding: space(1);
+  border: 1px solid clr(full-black);
+}

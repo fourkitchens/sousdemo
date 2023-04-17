@@ -1,0 +1,5 @@
+{% set form__base_class = form__base_class|default('form') %}
+
+<form {{ bem(form__base_class, form__modifiers, form__blockname, [form_id]) }}>
+	{{ children }}
+</form>

@@ -1,0 +1,68 @@
+{#
+ # Available Props:
+ # - site_footer__theme
+ #
+ # Available Blocks
+ # - site_footer__logo
+ # - site_footer__menu
+ #}
+
+{% set site_footer__base_class = 'site-footer' %}
+
+{% set site_footer__attributes = {
+  'data-component-width': 'max',
+  'data-site-footer-border-thickness': site_footer__border_thickness|default('0'),
+  'class': bem(site_footer__base_class),
+} %}
+
+{% set phone_link %}
+	<span>Phone: </span>
+	{% include "@atoms/link/link.twig" with {
+		link__content: '413-584-2700',
+		link__url: 'tel:413-584-2700',
+		link__style: 'no-underline',
+	} %}
+{% endset %}
+
+<footer
+	{{ add_attributes(site_footer__attributes) }}>
+
+	{# Site Branding #}
+	{% block site_footer__branding %}
+		{% include "@molecules/logo/logo.twig" with {
+			logo__type: 'informal',
+		}%}
+	{% endblock %}
+
+	<div
+		{{ bem('inner', [], site_footer__base_class) }}>
+		{# primary footer section #}
+		<div {{ bem('primary', [], site_footer__base_class) }}>
+			{% block site_footer__tagline %}
+				<div {{ bem('site-info', [], site_footer__base_class) }}>
+					<address>
+						{% include "@atoms/text/headings/heading.twig" with {
+							heading__level: '3',
+							heading: 'Sous Starter',
+						} %}
+						{% include "@atoms/text/text/text.twig" with {
+							text__content: '10 Elm Street<br>Northampton, Massachussetts 01063',
+						} %}
+						{% include "@atoms/text/text/text.twig" with {
+							text__content: phone_link,
+						} %}
+					</address>
+				</div>
+			{% endblock %}
+			{% block site_footer__menu %}
+				{% include "@organisms/navigation/footer/footer.twig" %}
+			{% endblock %}
+
+			{% block site_footer__promo %}
+				{% include "@templates/placeholder/placeholder.twig"  with {
+					place_holder: "Promo placeholder",
+				} %}
+			{% endblock %}
+		</div>
+	</div>
+</div></footer>

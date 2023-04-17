@@ -1,0 +1,40 @@
+@use '../../00-base/functions/color' as *;
+@use '../../00-base/typography/typography' as *;
+@use '../../00-base/spacing/spacing' as *;
+@use '../../01-atoms/link/link' as *;
+
+.text {
+  margin: 0;
+  z-index: 1;
+  position: relative;
+  word-break: break-word;
+
+  &[data-text-position='left'] {
+    margin-right: auto;
+  }
+
+  &[data-text-position='center'] {
+    margin-inline: auto;
+  }
+
+  &[data-text-position='right'] {
+    margin-left: auto;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Paragraphs
+  p {
+    margin: 0 0 space(1.5);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.large {
+      @include h4;
+    }
+  }
+}

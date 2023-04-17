@@ -1,0 +1,10 @@
+@use '../../../00-base/typography/typography' as *;
+@use '../../../00-base/spacing/spacing' as *;
+
+pre {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  margin-bottom: space(2);
+  font-size: fontsize(18);
+}

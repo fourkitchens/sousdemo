@@ -1,0 +1,120 @@
+@use '../../../00-base/breakpoints/breakpoints' as *;
+@use '../../../00-base/spacing/spacing' as *;
+@use '../../../00-base/typography/typography' as *;
+@use '../../../00-base/functions/color' as *;
+@use '../../../00-base/functions/rem-calc' as *;
+
+:root {
+  --footer-logo: #{rem-calc(126)};
+  --footer-seperator: 6px;
+
+  @include breakpoint('medium') {
+    --footer-logo: #{rem-calc(176)};
+  }
+}
+
+/* stylelint-disable */
+.site-footer {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  flex-shrink: 0;
+  padding: 0 0 space(3);
+  margin: space(6) 0 0;
+  border-top: var(--footer-seperator) solid clr(background, inverse);
+
+  .logo {
+    margin: calc(var(--footer-logo) / -2 - var(--footer-seperator)) auto 0;
+    padding: 0 space(2);
+    background-color: clr(background);
+    display: table;
+  }
+
+  .logo__link {
+    display: block;
+    max-width: var(--footer-logo);
+  }
+
+  .place-holder {
+    padding: space(3) space(2);
+    width: 100%;
+    margin-block: space(1);
+
+    @include breakpoint('medium') {
+      width: 100%;
+      margin-block: space(2);
+    }
+
+    @include breakpoint('large') {
+      width: auto;
+      margin: 0;
+    }
+  }
+
+  .place-holder__content {
+    font-size: fontsize(18);
+  }
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-flow: column nowrap;
+
+  > * {
+    width: 100%;
+  }
+}
+
+.site-footer__primary {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 1 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: space(2) 0 space(1);
+
+  @include breakpoint('medium') {
+    flex-flow: row wrap;
+  }
+
+  @include breakpoint('large') {
+    flex-flow: row nowrap;
+  }
+
+  > *:first-child {
+    margin-right: auto;
+  }
+}
+
+.site-footer__site-info {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-bottom: space(2);
+
+  @include breakpoint('medium') {
+    margin-bottom: 0;
+  }
+
+  .heading {
+    @include body-l-condensed;
+
+    margin: 0;
+  }
+
+  .text:last-child {
+    margin-top: space(1);
+
+    a {
+      color: clr(text);
+
+      &:hover {
+        color: clr(primary);
+      }
+    }
+  }
+
+  address {
+    font-style: normal;
+  }
+}
+/* stylelint-enable */

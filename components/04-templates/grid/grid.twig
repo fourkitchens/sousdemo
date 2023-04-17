@@ -1,0 +1,32 @@
+{% set grid__base_class = 'grid' %}
+{% set grid__modifiers = grid__modifiers|default([]) %}
+{% set grid__item__alignment = grid__item__alignment|default('standard') %}
+{% set grid__item__count = grid__item__count|default('even') %}
+{% set grid__separators = grid__separators|default(false) %}
+{% set grid__spacing = grid__spacing|default('') %}
+{% set grid__attributes = grid__attributes|default([]) %}
+
+{% set grid__attributes = grid__attributes|merge({
+  'class': bem(grid__base_class, grid__modifiers, grid__blockname),
+  'data-grid-columns': grid__columns,
+	'data-grid-count-class': grid__item__count,
+	'data-grid-spacing': grid__spacing,
+}) %}
+
+{% if grid__separators %}
+	{% set grid__attributes = grid__attributes|merge({
+		'data-grid-separators': 'true',
+	}) %}
+{% endif %}
+
+<div {{ add_attributes(grid__attributes) }}>
+	<div {{ bem('inner', [], grid__base_class) }}>
+		{% block grid__content %}
+			{% for item in grid__items %}
+				{% include "@templates/placeholder/placeholder.twig"  with {
+					place_holder: "Placeholder Content",
+				} %}
+			{% endfor %}
+		{% endblock %}
+	</div>
+</div>

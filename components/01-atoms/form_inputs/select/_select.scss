@@ -1,0 +1,12 @@
+@use '../../../00-base/functions/color' as *;
+@use '../../../00-base/spacing/spacing' as *;
+@use '../../buttons/buttons' as *;
+@use '../../lists/list';
+@use '../../../00-base/functions/rem-calc' as *;
+@use '../../../00-base/typography/typography' as *;
+@use '../../../00-base/breakpoints/breakpoints' as *;
+
+// Styling the library
+.select {
+  display: block;
+}

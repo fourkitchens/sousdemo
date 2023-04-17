@@ -1,0 +1,10 @@
+pager__items:
+  - title: '1'
+    url: '#'
+    is_active: true
+  - title: '2'
+    url: '#'
+  - title: '3'
+    url: '#'
+  - title: '4'
+    url: '#'

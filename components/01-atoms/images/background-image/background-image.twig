@@ -1,0 +1,11 @@
+{% set background_image__base_class = background_image__base_class|default('background-image') %}
+
+<div {{ bem(background_image__base_class, [], background_image__blockname) }} data-responsive-background-image>
+  {% block background_image %}
+    {% include "@atoms/images/image/image.twig" with {
+      image_srcset: background_image__srcset,
+      image_sizes: background_image__sizes,
+      image_src: background_image__src,
+    } %}
+  {% endblock %}
+</div>

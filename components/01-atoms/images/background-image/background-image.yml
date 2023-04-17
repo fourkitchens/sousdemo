@@ -1,0 +1,4 @@
+output_image_tag: true
+background_image__sizes: '100vw'
+background_image__srcset: 'https://placeimg.com/320/180 320w, https://placeimg.com/640/360 640w, https://placeimg.com/960/540 960w, https://placeimg.com/1600/900 1600w'
+background_image__src: 'https://placeimg.com/320/180'

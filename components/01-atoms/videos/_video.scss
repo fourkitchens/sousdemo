@@ -1,0 +1,21 @@
+@use '../../00-base/typography/typography' as *;
+@use '../../00-base/spacing/spacing' as *;
+
+/* Responsive Video using CSS only */
+.video {
+  iframe {
+    height: 100%;
+    width: 100%;
+  }
+
+  video {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.video__wrap {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+}

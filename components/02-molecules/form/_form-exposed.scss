@@ -1,0 +1,122 @@
+@use '../../00-base/functions/color' as *;
+@use '../../00-base/functions/rem-calc' as *;
+@use '../../00-base/breakpoints/breakpoints' as *;
+@use '../../00-base/spacing/spacing' as *;
+
+.views-exposed-form {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-bottom: space(1.5);
+
+  .form-item {
+    flex: 1 1 auto;
+    max-width: calc(50% - #{space(2)});
+    margin-bottom: 0;
+    margin-right: space(2);
+
+    @include breakpoint('large') {
+      max-width: 25%;
+    }
+
+    &:nth-last-child(2) {
+      margin-right: 0;
+    }
+
+    &.form-item-field-self-help-tags-target-id {
+      max-width: 100%;
+      margin-right: 0;
+
+      @include breakpoint('large') {
+        max-width: calc(50% - #{space(2)});
+        margin-right: space(2);
+      }
+
+      + .form-item:not(.form-item-field-county-target-id) {
+        margin-right: space(2);
+      }
+    }
+
+    &.form-item-sort-order {
+      max-width: 100%;
+
+      @include breakpoint('medium') {
+        max-width: calc(50% - #{space(2)});
+      }
+
+      @include breakpoint('large') {
+        max-width: space(1) * 10;
+      }
+    }
+
+    &.form-item-field-county-target-id {
+      max-width: 100%;
+      margin-right: 0;
+
+      @include breakpoint('medium') {
+        max-width: calc(50% - #{space(2)});
+      }
+    }
+
+    &.form-no-label {
+      margin-top: space(2);
+    }
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
+
+    .form-item.form-no-label {
+      margin-top: space(0.5);
+      max-width: none;
+      width: auto;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 0;
+    width: 100%;
+    margin-top: space(1);
+    align-self: flex-start;
+
+    @include breakpoint('medium') {
+      width: auto;
+      margin-top: 0;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    input:first-child:not(:last-child) {
+      margin-right: space(1);
+    }
+  }
+
+  .form-item:has([name='field_last_name_initial']) {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-left: auto;
+
+    label {
+      flex: 0 1 auto;
+      white-space: nowrap;
+      margin-left: auto;
+      margin-right: space(1);
+    }
+
+    input {
+      max-width: 5ch;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+
+  .form_item__textfield {
+    margin-bottom: 0;
+  }
+}

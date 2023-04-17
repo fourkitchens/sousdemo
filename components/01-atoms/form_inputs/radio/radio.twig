@@ -1,0 +1,15 @@
+{% if not attributes %}
+	<fieldset class="form_item form_item--radio">
+		<legend class="h3">{{radio_label}}</legend>
+		<ul class="form_item--radios">
+		{% endif %}
+		{% for key, radio in radios %}
+			{% include "@atoms/form_inputs/radio/_radio-item.twig" with {
+        radio_item: radio.title,
+        radio_item_checked: radio.checked
+      } %}
+		{% endfor %}
+		{% if not attributes %}
+		</ul>
+	</fieldset>
+{% endif %}

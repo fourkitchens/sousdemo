@@ -1,0 +1,18 @@
+// Use this mixin when the image should "cover" the whole component area.
+// Define the expected ratio of the image in order to show the full image.
+// 56.25% = 16:9 ratio
+@mixin background-image-cover($ratio: null) {
+  &[data-responsive-background-image] {
+    background-size: cover;
+    background-position: center center;
+    padding-bottom: #{$ratio};
+  }
+}
+
+[data-responsive-background-image] img {
+  display: none;
+}
+
+.background-image {
+  @include background-image-cover(56.25%);
+}
