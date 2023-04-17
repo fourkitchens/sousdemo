@@ -1,6 +1,6 @@
 {
-    "name": "emulsify-ds/emulsify-drupal",
-    "description": "Storybook development + Webpack Build + Drupal 8 theme",
+    "name": "fourkitchens/sousdemo",
+    "description": "Emulsify theme built for the Sous Builder Demo",
     "type": "drupal-theme",
     "homepage": "http://emulsify.info",
     "license": "GPL-2.0-only",
@@ -20,6 +20,10 @@
       {
           "name": "Randy Oest",
           "email": "randy@fourkitchens.com"
+      },
+      {
+          "name": "Callin Mullaney",
+          "email": "callin@fourkitchens.com"
       }
     ],
     "repositories": {
