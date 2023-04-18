@@ -80,22 +80,22 @@
   &--with-bg {
     @include section-padding(2);
 
-    background-color: clr(accent);
+    background-color: clr(primary);
 
     + .container {
       @include margin-gap-top;
     }
 
     &[data-component-theme*='dark'] {
-      background-color: clr(accent, dark);
+      background-color: clr(primary, dark, 0.66);
     }
 
     &[data-component-theme*='light'] {
-      background-color: clr(accent, light);
+      background-color: clr(primary, light, 0.66);
     }
 
     &[data-component-theme*='bright'] {
-      background-color: clr(accent, bright);
+      background-color: clr(primary, bright, 0.66);
     }
 
     &[data-component-theme*='white'] {

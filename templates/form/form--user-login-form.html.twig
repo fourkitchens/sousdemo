@@ -1,3 +1,8 @@
-{{ attach_library('smith/form-login') }}
-
-{% include "@molecules/form/form-login.twig" %}
+{% embed "@templates/container/container.twig" with {
+  container__component_width: 'compressed',
+  container__component_alignment: 'center',
+}%}
+  {% block container__content %}
+    {% include "@molecules/form/form-login.twig" %}
+  {% endblock %}
+{% endembed %}

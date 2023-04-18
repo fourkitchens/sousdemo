@@ -11,20 +11,33 @@
  * themed in menu-local-task.html.twig.
  */
 #}
-{% if primary %}
-  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
-{% endif %}
-{% if secondary %}
-  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
-{% endif %}
 
-{% embed "@atoms/lists/list.twig" %}
-  {% block list__content %}
-    {% if primary %}
-      {{ primary }}
-    {% endif %}
-    {% if secondary %}
-      {{ secondary }}
-    {% endif %}
+{% set local_tasks %}
+  {% if primary %}
+    <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
+  {% endif %}
+  {% if secondary %}
+    <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
+  {% endif %}
+
+  {% embed "@atoms/lists/list.twig" %}
+    {% block list__content %}
+      {% if primary %}
+        {{ primary }}
+      {% endif %}
+      {% if secondary %}
+        {{ secondary }}
+      {% endif %}
+    {% endblock %}
+  {% endembed %}
+{% endset %}
+
+{% embed "@templates/container/container.twig" with {
+  container__component_width: 'compressed',
+  container__component_alignment: 'center',
+  container__modifiers: ['no-bottom'],
+}%}
+  {% block container__content %}
+    {{ local_tasks }}
   {% endblock %}
 {% endembed %}

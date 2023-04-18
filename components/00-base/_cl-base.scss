@@ -22,7 +22,7 @@
 
 .cl-table__bp-xsmall {
   @include breakpoint('xsmall') {
-    background: clr(accent, dark);
+    background: clr(primary, dark);
     color: clr(text, inverse);
   }
 
@@ -34,7 +34,7 @@
 
 .cl-table__bp-small {
   @include breakpoint('small') {
-    background: clr(accent, dark);
+    background: clr(primary, dark);
     color: clr(text, inverse);
   }
 
@@ -46,7 +46,7 @@
 
 .cl-table__bp-medium {
   @include breakpoint('medium') {
-    background: clr(accent, dark);
+    background: clr(primary, dark);
     color: clr(text, inverse);
   }
 
@@ -58,7 +58,7 @@
 
 .cl-table__bp-large {
   @include breakpoint('large') {
-    background: clr(accent, dark);
+    background: clr(primary, dark);
     color: clr(text, inverse);
   }
 
@@ -70,7 +70,7 @@
 
 .cl-table__bp-xlarge {
   @include breakpoint('xlarge') {
-    background: clr(accent, dark);
+    background: clr(primary, dark);
     color: clr(text, inverse);
   }
 }
