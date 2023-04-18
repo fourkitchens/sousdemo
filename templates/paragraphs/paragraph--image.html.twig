@@ -1,0 +1,80 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if content.field_image.0['#media'].field_allow_download[0].value == '1' %}
+	{% set media = content.field_image.0['#media'] %}
+	{% set image_path = file_url(media.field_media_image.0.entity.uri.value) %}
+	{% set image_filename = media.field_media_image.0.entity.filename.value %}
+{% endif %}
+
+{% embed "@templates/container/container.twig" with {
+  container__component_alignment: 'center',
+  container__component_width: content.field_image_size.0['#markup']|lower,
+}%}
+	{% block container__content %}
+		<div class="image">
+			{{ content.field_image.0 }}
+
+			{% if image_path and image_filename %}
+				<div class="download_link__wrap">
+					{% include "@molecules/download-link/download-link.twig" with {
+            download_link__blockname: 'image',
+            download_link__path: image_path,
+            download_link__filename: image_filename,
+            download_link__tooltip: 'Download full-size image',
+          } %}
+				</div>
+			{% endif %}
+
+			{% if content.field_image.0['#media'].field_caption.0 %}
+				{% include "@atoms/text/text/text.twig" with {
+          text__content: content.field_image.0['#media'].field_caption.0.value,
+          text__blockname: 'caption',
+        } %}
+			{% endif %}
+
+			{% if content.field_image.0['#media'].field_copyright.0 %}
+				{% include "@atoms/text/text/text.twig" with {
+          text__content: content.field_image.0['#media'].field_copyright.0.value,
+          text__base_class: 'credit',
+        } %}
+			{% endif %}
+		</div>
+	{% endblock %}
+{% endembed %}

@@ -71,34 +71,25 @@
  */
 #}
 
-<article {{ bem("node") }}>
+<article{{attributes}}>
+	{{ title_prefix }}{{ title_suffix }}
+	<div{{content_attributes}}>
+		{% embed "@templates/container/container.twig" with {
+      container__component_width: 'compressed',
+      container__component_alignment: 'center',
+      container__modifiers: ['no-bottom'],
+    }%}
+			{% block container__content %}
+				{% include "@atoms/text/text/text.twig" with {
+          text__element: 'p',
+          text__content: content.field_subtitle.0['#text'],
+          text__base_class: 'subheading',
+        } %}
+			{% endblock %}
+		{% endembed %}
 
-  {{ title_prefix }}
-  {% if not page %}
-    {% include "@atoms/text/headings/_heading.twig" with {
-      "heading_level": 2,
-      "heading": label,
-      "heading_url": url,
-      "heading_link_attributes": {
-        'rel': 'bookmark'
-      },
-    } %}
-  {% endif %}
-  {{ title_suffix }}
+		{{ content }}
 
-  {% if display_submitted %}
-    <footer>
-      {{ author_picture }}
-      <div{{ author_attributes }}>
-        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-        {{ metadata }}
-      </div>
-    </footer>
-  {% endif %}
-
-  <div{{ content_attributes }}>
-    {{ content }}
-  </div>
+	</div>
 
 </article>
-

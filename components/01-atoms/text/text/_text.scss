@@ -11,7 +11,7 @@
   h3,
   h4,
   h5 {
-    font-family: $font-family-serif;
+    font-family: $font-family-sans;
   }
 
   h1 {
@@ -68,16 +68,6 @@
 
   p:not(:last-child) {
     margin-bottom: space(1);
-  }
-}
-
-.glossary-heading {
-  color: clr(accent, dark, blue);
-  font-family: $font-family-serif;
-  font-size: $font-size-100;
-
-  @include breakpoint('medium') {
-    font-size: $font-size-160;
   }
 }
 

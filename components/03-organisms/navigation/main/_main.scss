@@ -56,7 +56,7 @@
     margin: 0;
 
     @include breakpoint('medium') {
-      border-color: clr(accent, bright, 'green');
+      border-color: clr(accent, bright);
     }
 
     ~ .main-nav__toggle {
@@ -126,7 +126,7 @@
     @include breakpoint('medium') {
       margin-left: (space(1) + space(0.25)) * -1;
       padding-left: space(0.75);
-      border-left: (space(1) + space(0.25)) solid clr(accent, bright, 'green');
+      border-left: (space(1) + space(0.25)) solid clr(accent, bright);
       margin-block: -1px;
     }
   }

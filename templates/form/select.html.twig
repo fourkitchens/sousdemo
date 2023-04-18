@@ -10,4 +10,7 @@
  * @see template_preprocess_select()
  */
 #}
-{% include "@atoms/forms/_select-element.twig" %}
+
+{{ attach_library('smith/choices') }}
+
+{% include "@atoms/form_inputs/_select-element.twig" %}

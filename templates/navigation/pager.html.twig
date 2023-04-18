@@ -29,4 +29,6 @@
  * @see template_preprocess_pager()
  */
 #}
-{% include "@molecules/pager/pager.twig" %}
+{% include "@organisms/navigation/pager/pager.twig" with {
+  pager__items: items
+} %}

@@ -30,7 +30,6 @@ $font-size-75: rem-calc(75);
 $font-size-80: rem-calc(80);
 $font-size-100: rem-calc(100);
 $font-size-160: rem-calc(160);
-$font-family-serif: 'Roboto', times, serif;
 $font-family-sans: 'Roboto', verdana, sans-serif;
 $font-weight-extra-light: 200;
 $font-weight-light: 300;
@@ -115,9 +114,10 @@ $fontsizes: (
     #{$font-size-44} + 1.1458vw,
     #{$font-size-66}
   );
-  font-family: $font-family-serif;
+  font-family: $font-family-sans;
   letter-spacing: $letter-spacing-neg2;
   line-height: $line-height;
+  font-weight: $font-weight-bold;
 }
 
 @mixin h2 {
@@ -126,9 +126,10 @@ $fontsizes: (
     #{$font-size-36} + 1.1458vw,
     #{$font-size-48}
   );
-  font-family: $font-family-serif;
+  font-family: $font-family-sans;
   letter-spacing: $letter-spacing-neg1;
   line-height: $line-height;
+  font-weight: $font-weight-medium;
 }
 
 @mixin h3 {
@@ -137,9 +138,10 @@ $fontsizes: (
     #{$font-size-28} + 1.1458vw,
     #{$font-size-36}
   );
-  font-family: $font-family-serif;
+  font-family: $font-family-sans;
   letter-spacing: $letter-spacing;
   line-height: $line-height;
+  font-weight: $font-weight-medium;
 }
 
 @mixin h4 {
@@ -148,9 +150,10 @@ $fontsizes: (
     #{$font-size-22} + 1.1458vw,
     #{$font-size-28}
   );
-  font-family: $font-family-serif;
+  font-family: $font-family-sans;
   letter-spacing: $letter-spacing;
   line-height: $line-height-loose;
+  font-weight: $font-weight-medium;
 }
 
 @mixin h5 {
@@ -162,6 +165,7 @@ $fontsizes: (
   font-family: $font-family-sans;
   letter-spacing: $letter-spacing;
   line-height: $line-height-loose;
+  font-weight: $font-weight-medium;
 }
 
 @mixin eyebrow {
@@ -183,7 +187,7 @@ $fontsizes: (
     #{$font-size-20} + 0.2778vw,
     #{$font-size-24}
   );
-  font-family: $font-family-serif;
+  font-family: $font-family-sans;
   letter-spacing: $letter-spacing;
   line-height: $line-height-loose;
 }

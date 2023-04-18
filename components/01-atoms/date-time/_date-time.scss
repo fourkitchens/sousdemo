@@ -11,8 +11,8 @@
   flex-flow: column nowrap;
   align-content: center;
   border-radius: 100vw;
-  color: clr(accent, base, blue);
-  border: 1px solid clr(accent, base, blue);
+  color: clr(accent);
+  border: 1px solid clr(accent);
   aspect-ratio: 1;
 
   [data-teaser-layout='inline'] & {

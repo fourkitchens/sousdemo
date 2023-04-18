@@ -3,7 +3,7 @@
 @use '../../../00-base/spacing/spacing' as *;
 
 .heading {
-  font-family: typography.$font-family-serif;
+  font-family: typography.$font-family-sans;
   margin: 0 0 space(1);
 }
 

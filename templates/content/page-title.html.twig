@@ -13,11 +13,9 @@
  */
 #}
 
-{{ title_prefix }}
 {% if title %}
-  {% include "@atoms/text/headings/_heading.twig" with {
-    "heading_level": 1,
-    "heading": title,
+  {% include "@molecules/page-title/page-title.twig" with {
+    page_title__heading: title,
+    page_title__bg: true,
   } %}
 {% endif %}
-{{ title_suffix }}

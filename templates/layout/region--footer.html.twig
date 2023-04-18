@@ -14,6 +14,18 @@
 #}
 {% extends "@organisms/site/site-footer/site-footer.twig" %}
 
-{% block footer__menu %}
-  {{ content }}
+{% block site_footer__branding %}
+  {{ elements.sitebranding_2 }}
+{% endblock %}
+
+{% block site_footer__menu %}
+  {{ elements.footer }}
+{% endblock %}
+
+{% block site_footer__social %}
+  {{ elements.social }}
+{% endblock %}
+
+{% block site_footer__meta %}
+  {{ elements.meta }}
 {% endblock %}

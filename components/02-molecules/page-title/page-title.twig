@@ -1,0 +1,112 @@
+{#
+ # Available Variables:
+ # - page_title__heading
+ # - page_title__meta (optional)
+ #}
+
+{% set page_title__base_class = 'page-title' %}
+{% set page_title__attributes = {
+  'class': bem(page_title__base_class, page_title__modifiers, page_title__blockname),
+} %}
+{% set container__modifiers = container__modifiers|default([]) %}
+
+{% if page_title__bg %}
+	{% set container__attributes = {
+    'data-component-theme': 'neutral light',
+  } %}
+{% endif %}
+
+{% set page_title__component_width = page_title__component_width|default('standard') %}
+{% set page_title__component_alignment = page_title__component_alignment|default('center') %}
+
+{% if page_title__separator %}
+	{% set container__modifiers = container__modifiers|merge(['separator']) %}
+{% endif %}
+
+{% if page_title__separator is null and page_title__bg is null %}
+	{% set container__modifiers = container__modifiers|merge(['no-bottom']) %}
+{% endif %}
+
+
+{% if page_title__image and page_title__image != 'none' %}
+	{% set container__modifiers = container__modifiers|merge(['two-spacing']) %}
+	{% set page_title__component_width = 'wide' %}
+{% endif %}
+
+{% if page_title__image == 'large' %}
+	{% set page_title__image__modifiers = ['large'] %}
+	{% set container__modifiers = container__modifiers|merge(['no-spacing']) %}
+{% endif %}
+
+{% set image %}
+<div {{ bem('image', page_title__image__modifiers, page_title__base_class) }}>
+	{% block page_title__media %}
+		{% if page_title__image == 'small' %}
+			{% include "@atoms/images/image/image.twig" with {
+        image__srcset: page_title__srcset_small,
+        image__sizes: page_title__image__sizes_small,
+        image__src: page_title__src_small,
+      }%}
+		{% elseif page_title__image == 'large' %}
+			{% include "@atoms/images/image/image.twig" with {
+        image__srcset: page_title__srcset_large,
+        image__sizes: page_title__image__sizes_large,
+        image__src: page_title__src_large,
+      }%}
+		{% endif %}
+	{% endblock %}
+</div>
+{% endset %}
+
+{% set page_title %}
+<div {{ add_attributes(page_title__attributes) }}>
+	{% include "@atoms/text/headings/heading.twig" with {
+      heading__level: '1',
+      heading: page_title__heading,
+      heading__blockname: page_title__base_class,
+    } %}
+	{% if page_title__eyebrow %}
+		{% block page_title__eyebrow %}
+			{% include "@atoms/text/text/text.twig" with {
+          text__element: 'p',
+          text__content: page_title__eyebrow,
+          text__base_class: 'eyebrow',
+          text__blockname: page_title__base_class,
+        } %}
+		{% endblock %}
+	{% endif %}
+	{% if page_title__subheading %}
+		{% include "@atoms/text/text/text.twig" with {
+        text__element: 'p',
+        text__content: page_title__subheading,
+        text__base_class: 'subheading',
+        text__blockname: page_title__base_class,
+      } %}
+	{% endif %}
+	{% if page_title__content %}
+		{% block page_title_content %}
+			{% include "@atoms/text/text/text.twig" with {
+          text__content: page_title__content,
+          text__blockname: page_title__base_class,
+        } %}
+		{% endblock %}
+	{% endif %}
+	{% block page_title__suffix %}
+		{{ page_title_suffix_content }}
+	{% endblock %}
+</div>
+{% endset %}
+
+{# Render the accordion within a generic container #}
+{% embed "@templates/container/container.twig" with {
+  container__component_alignment: page_title__component_alignment,
+  container__bg_color: page_title__bg,
+  container__component_width: page_title__component_width,
+}%}
+	{% block container__content %}
+		{{ page_title }}
+		{% if page_title__image and page_title__image != 'none' %}
+			{{ image }}
+		{% endif %}
+	{% endblock %}
+{% endembed %}

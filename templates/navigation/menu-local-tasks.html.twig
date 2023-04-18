@@ -11,4 +11,20 @@
  * themed in menu-local-task.html.twig.
  */
 #}
-{% include "@molecules/tabs/tabs.twig" %}
+{% if primary %}
+  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
+{% endif %}
+{% if secondary %}
+  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
+{% endif %}
+
+{% embed "@atoms/lists/list.twig" %}
+  {% block list__content %}
+    {% if primary %}
+      {{ primary }}
+    {% endif %}
+    {% if secondary %}
+      {{ secondary }}
+    {% endif %}
+  {% endblock %}
+{% endembed %}

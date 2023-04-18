@@ -39,16 +39,5 @@
 					{% endblock %}
 				</div>
 		</div>
-
-		{# Utility Nav #}
-		<div {{ bem('utility-nav', [], site_header__base_class) }}>
-			{% block site_header__search %}
-				{% include "@atoms/images/icons/_icon.twig" with {
-					icon__base_class: 'search',
-					icon__blockname: site_header__base_class,
-					icon__name: 'search',
-				} %}
-			{% endblock %}
-		</div>
 	</div>
 </header>
