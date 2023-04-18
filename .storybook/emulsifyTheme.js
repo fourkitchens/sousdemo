@@ -5,8 +5,8 @@ import { create } from '@storybook/theming';
 export default create({
   base: 'light',
   // Branding
-  brandTitle: 'Smith College',
-  brandUrl: 'https://smith.edu',
+  brandTitle: 'Sous',
+  brandUrl: 'https://emulsify.info',
   brandImage:
-    'https://dev-smithcolleged9-4k.pantheonsite.io/themes/custom/smith/assets/images/smith-logo.svg',
+    '/themes/custom/sousdemo/assets/images/sous.svg',
 });

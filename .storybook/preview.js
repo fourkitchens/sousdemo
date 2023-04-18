@@ -1,4 +1,4 @@
-import { makeDecorator } from '@storybook/addons';
+import { addDecorator } from '@storybook/html';
 import { useEffect } from '@storybook/client-api';
 import Twig from 'twig';
 import { setupTwig } from './setupTwig';
@@ -12,7 +12,8 @@ import '../dist/css/cl-style.css';
 // If in a Drupal project, it's recommended to import a symlinked version of drupal.js.
 import './_drupal.js';
 
-makeDecorator((storyFn) => {
+// addDecorator deprecated, but not sure how to use this otherwise.
+addDecorator((storyFn) => {
   useEffect(() => Drupal.attachBehaviors(), []);
   return storyFn();
 });

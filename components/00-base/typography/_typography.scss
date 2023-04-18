@@ -5,7 +5,9 @@
 @use '../functions/map' as *;
 @use '../breakpoints/breakpoints' as *;
 
+/* stylelint-disable */
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ%26');
+/* stylelint-enable */
 
 // Typography CSS Vars
 // Add px values from design tokens and run them through the rem-calc function.
