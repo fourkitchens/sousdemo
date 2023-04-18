@@ -1,0 +1,30 @@
+{% set video_embed__base_class = 'video' %}
+
+ {% set video_embed__attibutes = {
+  'class': bem(video_embed__base_class, video_embed__modifiers, video_embed__block_name),
+} %}
+
+{% set video_embed %}
+  <div {{ add_attributes(video_embed__attibutes) }}>
+    {% block video_embed_content %}
+      {% include "@atoms/videos/video.twig" with {
+        video__type: video__type|default('remote'),
+        video__addition_classes: video__addition_classes|default([]),
+        video__attributes: video__attributes|default([]),
+        }%}
+    {% endblock %}
+  </div>
+{% endset %}
+
+{# Render the video within a generic container #}
+{% embed "@templates/container/container.twig" with {
+  container__component_width: video__width|default('compressed'),
+  container__component_alignment: video__alignment|default('center'),
+  container__base_class: video_embed__base_class,
+  container__heading: video__heading,
+  container__text: video__text,
+}%}
+	{% block container__content %}
+    {{ video_embed }}
+	{% endblock %}
+{% endembed %}
