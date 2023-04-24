@@ -1,0 +1,91 @@
+/* Tab Navigation */
+@use '../../00-base/functions/color' as *;
+@use '../../00-base/breakpoints/breakpoints' as *;
+@use '../../00-base/spacing/spacing' as *;
+@use '../../00-base/typography/typography' as *;
+@use '../../01-atoms/lists/list' as list;
+
+.tabs-sous {
+  &__nav {
+    @include list.reset;
+
+    @include breakpoint('medium') {
+      display: flex;
+    }
+  }
+
+  /* Tab Content */
+  &__tab {
+    position: absolute;
+    opacity: 0;
+
+    &.is-active {
+      position: relative;
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+}
+
+/* Drupal Local Tasks variant */
+.tabs__nav--local-tasks {
+  border: 2px solid clr(accent);
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 0;
+  padding: 0;
+  border-radius: space(1);
+  overflow: hidden;
+  padding: space(0.5);
+
+  li {
+    display: flex;
+    font-weight: 600;
+    min-width: rem-calc(50);
+    text-align: center;
+    flex: 1 1 100%;
+    overflow: hidden;
+    border-radius: space(1);
+
+    &:first-child {
+      margin-right: space(0.5);
+    }
+
+    &:last-child {
+      margin-left: space(0.5);
+    }
+  }
+
+  a {
+    background-color: transparent;
+    color: clr(text);
+    display: flex;
+    flex: 1 1 100%;
+    align-items: center;
+    padding: space(0.5) space(1);
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: none;
+
+    &:hover {
+      background-color: clr(background);
+      color: clr(text);
+      transition: all 0.3s ease-in-out;
+
+      &::after {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+      }
+    }
+
+    &.is-active {
+      background-color: clr(text);
+      color: clr(text, inverse);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

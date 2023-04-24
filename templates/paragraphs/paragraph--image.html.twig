@@ -37,44 +37,13 @@
  */
 #}
 
-{% if content.field_image.0['#media'].field_allow_download[0].value == '1' %}
-	{% set media = content.field_image.0['#media'] %}
-	{% set image_path = file_url(media.field_media_image.0.entity.uri.value) %}
-	{% set image_filename = media.field_media_image.0.entity.filename.value %}
-{% endif %}
-
 {% embed "@templates/container/container.twig" with {
   container__component_alignment: 'center',
   container__component_width: content.field_image_size.0['#markup']|lower,
+	container__bg_color: 'true',
+  container__theme: 'white',
 }%}
 	{% block container__content %}
-		<div class="image">
-			{{ content.field_image.0 }}
-
-			{% if image_path and image_filename %}
-				<div class="download_link__wrap">
-					{% include "@molecules/download-link/download-link.twig" with {
-            download_link__blockname: 'image',
-            download_link__path: image_path,
-            download_link__filename: image_filename,
-            download_link__tooltip: 'Download full-size image',
-          } %}
-				</div>
-			{% endif %}
-
-			{% if content.field_image.0['#media'].field_caption.0 %}
-				{% include "@atoms/text/text/text.twig" with {
-          text__content: content.field_image.0['#media'].field_caption.0.value,
-          text__blockname: 'caption',
-        } %}
-			{% endif %}
-
-			{% if content.field_image.0['#media'].field_copyright.0 %}
-				{% include "@atoms/text/text/text.twig" with {
-          text__content: content.field_image.0['#media'].field_copyright.0.value,
-          text__base_class: 'credit',
-        } %}
-			{% endif %}
-		</div>
+		{{ content.field_image.0 }}
 	{% endblock %}
 {% endembed %}

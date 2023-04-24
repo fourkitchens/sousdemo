@@ -74,22 +74,6 @@
 <article{{attributes}}>
 	{{ title_prefix }}{{ title_suffix }}
 	<div{{content_attributes}}>
-		{% embed "@templates/container/container.twig" with {
-      container__component_width: 'compressed',
-      container__component_alignment: 'center',
-      container__modifiers: ['no-bottom'],
-    }%}
-			{% block container__content %}
-				{% include "@atoms/text/text/text.twig" with {
-          text__element: 'p',
-          text__content: content.field_subtitle.0['#text'],
-          text__base_class: 'subheading',
-        } %}
-			{% endblock %}
-		{% endembed %}
-
 		{{ content }}
-
 	</div>
-
 </article>

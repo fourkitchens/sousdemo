@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Theme override to display primary and secondary local tasks.
+ *
+ * Available variables:
+ * - primary: HTML list items representing primary tasks.
+ * - secondary: HTML list items representing primary tasks.
+ * - field_heading: Optional heading for the tabs component.
+ * - field_tabs: The collection of tabs with title and content.
+ * - field_tabs_display: Defines how the tabs will visually display.
+ *
+ */
+#}
+{% set tabs__base_class = 'tabs-sous' %}
+{% set tabs__modifiers = tabs__modifiers|default([]) %}
+
+{# Drupal Specific #}
+{% if primary %}
+  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
+  <ul class="tabs__nav tabs__nav--local-tasks">{{ primary }}</ul>
+{% endif %}
+
+{% if secondary %}
+  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
+  <ul>{{ secondary }}</ul>
+{% endif %}
+
+{# Component Library Specific (javascript version) #}
+{% if not primary %}
+  <div id="tabs" {{ bem(tabs__base_class, tabs__modifiers, tabs__blockname, ['no-js']) }} data-tabs-display="{{ tabs_display|default('horizontal-block') }}">
+    <div {{ bem('container', [], tabs__base_class)}}>
+      <ul {{ bem('nav', [], tabs__base_class) }}>
+        {% for key, tab in tabs %}
+          {% include "@molecules/tabs/_tab.twig" with {
+            tab_link: "#tab-" ~ key,
+            tab_text: tab.tab_text,
+            tab_icon: tab.tab_icon,
+          } %}
+        {% endfor %}
+      </ul>
+      <div {{ bem('content', [], tabs__base_class)}}>
+        {% for key, tab in tabs %}
+          {% set current_class = key == 0 ? ' is-active' : '' %}
+          <div {{ bem('tab', [], tabs__base_class, [current_class])}}>
+            <div id="tab-{{ key }}" {{ bem('text', [], tabs__base_class) }}>
+                {% for tab in tab.tab_content_items %}
+                  {{ tab }}
+                {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}

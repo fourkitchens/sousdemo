@@ -56,10 +56,12 @@
   </div>
 {% endset %}
 
-{# Render the accordion within a generic container #}
+{# Render the text-with-image within a generic container #}
 {% embed "@templates/container/container.twig" with {
   container__component_width: 'standard',
   container__component_alignment: 'center',
+  container__bg_color: 'true',
+  container__theme: 'white',
 }%}
 	{% block container__content %}
 		{{ text_with_image }}

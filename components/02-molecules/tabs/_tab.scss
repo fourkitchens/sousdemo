@@ -1,0 +1,45 @@
+@use '../../00-base/functions/color' as *;
+@use '../../00-base/breakpoints/breakpoints' as *;
+@use '../../00-base/spacing/spacing' as *;
+
+.tab-sous {
+  @include breakpoint('medium') {
+    flex: 0 1 100%;
+  }
+
+  &__link {
+    background-color: clr(background);
+    color: clr(text);
+    display: flex;
+    align-items: center;
+    padding: space(1) space(0.75);
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: none;
+
+    @include breakpoint('large') {
+      padding: space(2) space(0.75);
+    }
+
+    &:hover {
+      background-color: clr(background);
+      color: clr(text);
+      transition: all 0.3s ease-in-out;
+
+      &::after {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+      }
+    }
+
+    &.is-active {
+      background-color: clr(text);
+      color: clr(text, inverse);
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
