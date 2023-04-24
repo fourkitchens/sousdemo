@@ -7,48 +7,26 @@
 .logo {
   position: relative;
 
-  &[data-logo-type='informal'] {
-    circle {
-      fill: clr(accent, light);
-    }
+  :root {
+    --sous-logo: #10404f;
+    --sous-emulsify: #1a96ca;
 
-    path {
-      fill: clr(accent, dark);
+    [data-color-mode="dark"] {
+      --sous-logo: #fff;
     }
   }
 
-  &[data-logo-type='text'] {
-    @include transition;
+  .sous__logo {
+    color: var(--sous-logo);
+  }
 
-    max-width: rem-calc(230);
-    width: 100%;
-
-    @include breakpoint('medium') {
-      max-width: rem-calc(370);
-    }
-
-    .logo__link {
-      display: block;
-      padding: space(0.5) space(0.5) space(0.5) 0;
-
-      @include breakpoint('medium') {
-        padding: space(0.5) space(0.5) (space(1) + space(0.25)) 0;
-      }
-    }
-
-    .stuck & {
-      max-width: rem-calc(300);
-
-      .logo__link {
-        display: block;
-        padding: space(0.5) space(0.5) space(0.5) 0;
-      }
-    }
+  .sous__emulsify {
+    color: var(--sous-emulsify);
   }
 
   svg {
     display: block;
-    max-width: 100%;
+    max-width: rem-calc(195);
     height: auto;
   }
 }
