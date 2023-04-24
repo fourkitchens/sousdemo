@@ -6,7 +6,7 @@
 @use '../breakpoints/breakpoints' as *;
 
 /* stylelint-disable */
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i&display=swap&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ%26');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i&display=swap');
 /* stylelint-enable */
 
 // Typography CSS Vars
@@ -22,6 +22,7 @@ $font-size-22: rem-calc(22);
 $font-size-24: rem-calc(24);
 $font-size-28: rem-calc(28);
 $font-size-30: rem-calc(30);
+$font-size-32: rem-calc(32);
 $font-size-36: rem-calc(36);
 $font-size-39: rem-calc(39);
 $font-size-44: rem-calc(44);
@@ -58,6 +59,7 @@ $fontsizes: (
   24: var(--font-size-24),
   28: var(--font-size-28),
   30: var(--font-size-30),
+  32: var(--font-size-32),
   36: var(--font-size-36),
   39: var(--font-size-39),
   44: var(--font-size-44),
@@ -88,6 +90,7 @@ $fontsizes: (
   --font-size-28: #{$font-size-28};
   --font-size-24: #{$font-size-24};
   --font-size-30: #{$font-size-30};
+  --font-size-32: #{$font-size-32};
   --font-size-36: #{$font-size-36};
   --font-size-39: #{$font-size-39};
   --font-size-44: #{$font-size-44};
@@ -114,19 +117,19 @@ $fontsizes: (
   font-size: clamp(
     #{$font-size-44},
     #{$font-size-44} + 1.1458vw,
-    #{$font-size-66}
+    #{$font-size-56}
   );
   font-family: $font-family-sans;
   letter-spacing: $letter-spacing-neg2;
   line-height: $line-height;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-medium;
 }
 
 @mixin h2 {
   font-size: clamp(
     #{$font-size-36},
     #{$font-size-36} + 1.1458vw,
-    #{$font-size-48}
+    #{$font-size-44}
   );
   font-family: $font-family-sans;
   letter-spacing: $letter-spacing-neg1;
@@ -138,7 +141,7 @@ $fontsizes: (
   font-size: clamp(
     #{$font-size-28},
     #{$font-size-28} + 1.1458vw,
-    #{$font-size-36}
+    #{$font-size-32}
   );
   font-family: $font-family-sans;
   letter-spacing: $letter-spacing;

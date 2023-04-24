@@ -11,13 +11,13 @@
   order: 1;
 
   @include breakpoint('medium') {
-    padding-block: space(1.5) 0;
+    padding-block: space(1) space(1.5);
   }
 
   > * {
     flex: 1 1 100%;
     order: 4;
-    margin-bottom: space(0.5);
+    margin-bottom: 0;
   }
 
   ul {
@@ -30,7 +30,6 @@
   li {
     @include eyebrow;
 
-    color: clr(neutral, n400);
     margin-inline: 0 space(1);
 
     &:not(:first-child) {
@@ -65,19 +64,16 @@
   @include h1;
 
   order: 1;
-  color: clr(neutral, n700);
 }
 
 .page-title__eyebrow {
   order: 0;
-  color: clr(neutral, n400);
 }
 
 .page-title__subheading {
   @include body-xl;
 
   order: 2;
-  color: clr(neutral, n500);
 }
 
 .page-title__text {
@@ -126,6 +122,8 @@
 
 // container overrides specific to page-title
 .container--with-bg:has(.page-title) {
+  margin-top: space(4);
+
   &::before {
     content: '';
     display: none;

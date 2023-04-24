@@ -17,15 +17,15 @@
   background-color: clr(background);
   box-shadow: 0 0 0 clr(full-black, 0);
 
+  + * {
+    @include breakpoint('medium') {
+      margin-top: space(4);
+    }
+  }
+
   &.stuck {
     position: sticky;
     box-shadow: 0 0 space(0.5) clr(full-black, 0.4);
-
-    + * {
-      @include breakpoint('medium') {
-        margin-top: 3rem;
-      }
-    }
 
     // Admin toolbar is present
     .gin--horizontal-toolbar & {

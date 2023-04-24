@@ -40,7 +40,7 @@
 {{ attach_library('sousdemo/video_embed') }}
 
 {% embed "@molecules/video/video.twig" with {
-  video__width: content.field_image_size.0['#markup'],
+  video__width: 'standard',
 } %}
   {% block video_embed_content %}
     {{ content.field_video }}

@@ -8,4 +8,8 @@
  */
 #}
 
-{% include "@molecules/menus/breadcrumbs/breadcrumbs.twig" %}
+{{ attach_library('sousdemo/breadcrumbs') }}
+
+{% include "@organisms/navigation/breadcrumbs/breadcrumbs.twig" with {
+  breadcrumbs_items: breadcrumb,
+}%}

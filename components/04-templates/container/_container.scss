@@ -77,9 +77,11 @@
     @include margin-gap-top;
   }
 
-  &--with-bg {
-    @include section-padding(2);
+  &:first-child:not(.container--half-spacing) {
+    @include section-padding-top(2);
+  }
 
+  &--with-bg {
     background-color: clr(primary);
 
     + .container {
